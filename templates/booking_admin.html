@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid my-5">
+  <div class="row">
+
+    <!-- Ledige tider -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="p-4 bg-light border rounded shadow">
+        <h4 class="mb-3">Ledige tider</h4>
+          <ul class="list-group">
+  {% for day, slots in available_slots.items() %}
+    <li class="list-group-item">
+      <strong>{{ day }}</strong><br>
+      {% for slot in slots %}
+        {{ slot[1] }}{% if not loop.last %}, {% endif %}
+      {% endfor %}
+    </li>
+  {% endfor %}
+</ul>
+      </div>
+    </div>
+
+    <!-- Bookede tider -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="p-4 bg-light border rounded shadow">
+        <h4 class="mb-3">Bookede tider</h4>
+          <ul class="list-group">
+            {% for booking in bookings %}
+              <li class="list-group-item">
+               {{ booking.date.strftime("%A") }} kl. {{ booking.timeslot }} - {{ booking.name }} <br> Telefon: {{ booking.telefon }} <br> Mail: {{ booking.email}}
+              </li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

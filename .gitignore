@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+secret.py
+*.db
+autosave/
+venv/
+.env
